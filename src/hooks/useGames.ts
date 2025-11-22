@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import useData from "./useData";
 import { Genre } from "./useGenres";
+import { gameQuery } from "../App";
 
 export interface Platform {
   id: number;
@@ -22,10 +23,13 @@ interface FetchGameResponse {
   results: Game[];
 }
 
-const useGames = (selectedGenre: Genre | null, selectedPlatform: Platform | null) =>
-  useData<Game>("/games", { params: { genres: selectedGenre?.id, platforms: selectedPlatform?.id } }, [
-    selectedGenre?.id,
-    selectedPlatform?.id
-  ]);
+const useGames = (
+  gameQuery: gameQuery
+) =>
+  useData<Game>(
+    "/games",
+    { params: { genres: gameQuery.genre?.id, platforms: gameQuery.platform?.id } },
+    [gameQuery]
+  );
 
 export default useGames;
