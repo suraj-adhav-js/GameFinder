@@ -1,11 +1,8 @@
-import { useEffect, useState } from "react";
-import apiClient from "../services/api-client";
-import useData from "./useData";
-
+import genres from "../data/genres";
 export interface Genre {
   id: number;
   name: string;
-  image_background:string
+  image_background: string;
 }
 
 interface FetchGenreResponse {
@@ -13,6 +10,6 @@ interface FetchGenreResponse {
   results: Genre[];
 }
 
-const useGenres = () => useData<Genre>('/genres');
+const useGenres = () => ({ data: genres, error: null, isLoading: null });
 
 export default useGenres;
