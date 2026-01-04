@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import genres from "../data/genres";
 import APIClinet from "../services/api-client";
-import { GameResponse } from "../services/api-client";
+import { FetchResponse } from "../services/api-client";
 
 const apiClient = new APIClinet<Genre>("/genres");
 
@@ -17,7 +17,7 @@ interface FetchGenreResponse {
 }
 
 const useGenres = () =>
-  useQuery<GameResponse<Genre>, Error>({
+  useQuery<FetchResponse<Genre>, Error>({
     queryKey: ["genres"],
     queryFn: apiClient.getAll,
     staleTime: 24 * 60 * 60 * 1000,
