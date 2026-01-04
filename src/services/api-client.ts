@@ -1,15 +1,27 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 
 export interface GameResponse<T> {
   count: number;
   results: T[];
 }
 
-const apiClient = axios.create({
+const axiosInstance =  axios.create({
     baseURL:"https://api.rawg.io/api",
     params:{
         key: 'c49ce0c53bdd42cd96bd1b1c427f9f19'
     }
 })
 
-export default apiClient;
+class APIClient<T>{
+  endpoint: string;
+
+  constructor(endpoint:string){
+    this.endpoint = endpoint;
+  }
+
+  getAll = (config:AxiosRequestConfig) =>{
+    return axiosInstance.get<GameResponse<T>>(this.endpoint,config).then(res=>res.data);
+  }
+}
+
+export default APIClient;
