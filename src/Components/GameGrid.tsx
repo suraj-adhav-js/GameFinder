@@ -20,7 +20,7 @@ const GameGrid = ({ gameQuery }: Props) => {
     isFetchingNextPage,
     hasNextPage,
   } = useGames(gameQuery);
-  const skeletons = [1, 2, 3, 4, 5, 6, 7, , 8, 9, 10, 11, 12];
+  const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
   const fetchedGamesCount =
     data?.pages.reduce((total, page) => {
