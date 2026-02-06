@@ -5,6 +5,7 @@ interface GameQuery {
   platformId?: number;
   sortOrder?: string;
   searchText?: string;
+  descriptionId?: number;
 }
 
 export interface GameQueryStore {
@@ -13,6 +14,7 @@ export interface GameQueryStore {
   setGenreId: (genreId: number) => void;
   setPlatformId: (platformId: number) => void;
   setSortOrder: (sortOrder: string) => void;
+  setDescriptionId: ( descriptionText:number)=>void;
 }
 
 const useGameQueryStore = create<GameQueryStore>((set) => ({
@@ -25,6 +27,7 @@ const useGameQueryStore = create<GameQueryStore>((set) => ({
     set((store) => ({ gameQuery: { ...store.gameQuery, platformId } })),
   setSortOrder: (sortOrder) =>
     set((store) => ({ gameQuery: { ...store.gameQuery, sortOrder } })),
+  setDescriptionId: (descriptionId)=> set((store)=>({ gameQuery: {...store.gameQuery, descriptionId}}))
 }));
 
 export default useGameQueryStore;
