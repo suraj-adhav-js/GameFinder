@@ -3,14 +3,9 @@ import ms from 'ms';
 import genres from "../data/genres";
 import APIClinet from "../services/api-client";
 import { FetchResponse } from "../services/api-client";
+import { Genre } from "../entities/Genre";
 
 const apiClient = new APIClinet<Genre>("/genres");
-
-export interface Genre {
-  id: number;
-  name: string;
-  image_background: string;
-}
 
 interface FetchGenreResponse {
   count: number;
