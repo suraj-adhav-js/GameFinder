@@ -3,7 +3,7 @@ import ms from 'ms';
 import genres from "../data/genres";
 import APIClinet from "../services/api-client";
 import { FetchResponse } from "../services/api-client";
-import { Genre } from "../entities/Genre";
+import Genre from "../entities/Genre";
 
 const apiClient = new APIClinet<Genre>("/genres");
 
